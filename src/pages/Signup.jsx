@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Header,
   Footer,
@@ -77,17 +77,39 @@ const Signup = ({ theme, toggleTheme }) => {
   };
   goToTop();
 
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleUserChange = (e) => setUser(e.target.value);
+  const handleUsernameChange = (e) => setUsername(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e, data) => {
+  let history = useHistory();
+
+  const handleSubmitForm = async (e) => {
     e.preventDefault();
-    console.log(data);
+
+    try {
+      await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((user) => {
+          console.log(user);
+          history.push("/dashboard");
+        });
+    } catch (err) {
+      console.log("error", err);
+    }
   };
 
   return (
@@ -99,14 +121,14 @@ const Signup = ({ theme, toggleTheme }) => {
         </div>
         <LoginContainer>
           <Title>Sign up</Title>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmitForm}>
             <FormContainer>
               <UserIcon />
               <Input
                 type="text"
                 placeholder="Username"
-                value={user}
-                onChange={handleUserChange}
+                value={username}
+                onChange={handleUsernameChange}
               />
             </FormContainer>
             <FormContainer>

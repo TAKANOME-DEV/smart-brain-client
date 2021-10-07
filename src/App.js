@@ -18,21 +18,23 @@ const App = () => {
       <TransitionGroup>
         <CSSTransition key={location.key} classNames="page" timeout={300}>
           <Switch location={location}>
-            <Route exact path="/">
-              <Home theme={theme} toggleTheme={toggleTheme} />
-            </Route>
-
-            <Route path="/login">
-              <Signin theme={theme} toggleTheme={toggleTheme} />
-            </Route>
-
-            <Route path="/register">
-              <Signup theme={theme} toggleTheme={toggleTheme} />
-            </Route>
-
-            <Route path="/dashboard">
-              <Dashboard theme={theme} toggleTheme={toggleTheme} />
-            </Route>
+            <Route
+              exact
+              path="/"
+              children={<Home theme={theme} toggleTheme={toggleTheme} />}
+            />
+            <Route
+              path="/login"
+              children={<Signin theme={theme} toggleTheme={toggleTheme} />}
+            />
+            <Route
+              path="/register"
+              children={<Signup theme={theme} toggleTheme={toggleTheme} />}
+            />
+            <Route
+              path="/dashboard"
+              children={<Dashboard theme={theme} toggleTheme={toggleTheme} />}
+            />
           </Switch>
         </CSSTransition>
       </TransitionGroup>

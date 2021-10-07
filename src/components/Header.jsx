@@ -20,7 +20,7 @@ const Container = styled.div`
   justify-content: flex-end;
   align-items: center;
 `;
-const Button = styled.button`
+const PrimaryButton = styled.button`
   font-size: 30px;
   padding: 15px 50px;
   margin: 0 10px;
@@ -28,6 +28,24 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.body};
   border: none;
+  border-radius: 20px;
+  transition: 0.5s ease;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 5px 0px;
+  &:hover {
+    transform: translateY(-5px);
+  }
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
+`;
+const SecondaryButton = styled.button`
+  font-size: 30px;
+  padding: 15px 50px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  border: 2px solid ${({ theme }) => theme.text};
   border-radius: 20px;
   transition: 0.5s ease;
   box-shadow: rgb(0 0 0 / 10%) 0px 5px 5px 0px;
@@ -79,10 +97,10 @@ const Header = ({ theme, toggleTheme }) => {
           handleClose={handleClose}
         />
         <Link to="login">
-          <Button>Login</Button>
+          <SecondaryButton>Login</SecondaryButton>
         </Link>
         <Link to="register">
-          <Button>Signup</Button>
+          <PrimaryButton>Signup</PrimaryButton>
         </Link>
       </Container>
     </Nav>

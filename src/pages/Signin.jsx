@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Header, Footer, EmailIcon, PasswordIcon } from "../components";
 import { login } from "../assets";
 
@@ -71,6 +71,42 @@ const Signin = ({ theme, toggleTheme }) => {
   };
   goToTop();
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleInputMail = (e) => setEmail(e.target.value);
+  const handleInputPassword = (e) => setPassword(e.target.value);
+
+  let history = useHistory();
+
+  const handleSubmitForm = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((user) => {
+          if (user.id) {
+            console.log(user);
+            history.push("/dashboard");
+          }
+        });
+
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <Header theme={theme} toggleTheme={toggleTheme} />
@@ -80,14 +116,24 @@ const Signin = ({ theme, toggleTheme }) => {
         </div>
         <LoginContainer>
           <Title>Sign in</Title>
-          <Form>
+          <Form onSubmit={handleSubmitForm}>
             <FormContainer>
               <EmailIcon />
-              <Input type="email" placeholder="Email" />
+              <Input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleInputMail}
+              />
             </FormContainer>
             <FormContainer>
               <PasswordIcon />
-              <Input type="password" placeholder="Password" />
+              <Input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handleInputPassword}
+              />
             </FormContainer>
             <Button type="submit">Login</Button>
             <Text>
