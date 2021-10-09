@@ -6,11 +6,11 @@ const Text = styled.p`
   font-size: 25px;
 `;
 
-const Rank = () => {
+const Rank = ({ username, entries }) => {
   return (
     <div style={{ textAlign: "center" }}>
-      <Text>Takanome, your current enrtie count is ...</Text>
-      <Text>0</Text>
+      <Text>{`${username}, your current entry count is ...`}</Text>
+      <Text>{`${entries}`}</Text>
     </div>
   );
 };

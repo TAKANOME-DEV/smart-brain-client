@@ -17,15 +17,20 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 const Image = styled.img`
-  margin-top: 150px;
   width: 450px;
   height: auto;
+  margin-bottom: 50px;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
-const LoginContainer = styled.div`
-  margin-top: 200px;
+const SignupContainer = styled.div`
+  margin-top: -50px;
 `;
 const Title = styled.h1`
   text-align: center;
+  letter-spacing: 3px;
+  font-size: 45px;
 `;
 const Form = styled.form`
   margin-top: 30px;
@@ -71,7 +76,7 @@ const Span = styled.span`
   text-decoration: underline;
 `;
 
-const Signup = ({ theme, toggleTheme }) => {
+const Signup = ({ theme, toggleTheme, loadUser }) => {
   const goToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -91,7 +96,7 @@ const Signup = ({ theme, toggleTheme }) => {
     e.preventDefault();
 
     try {
-      await fetch("http://localhost:5000/register", {
+      await fetch("https://smart-server-brain.herokuapp.com/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,8 +109,10 @@ const Signup = ({ theme, toggleTheme }) => {
       })
         .then((res) => res.json())
         .then((user) => {
-          console.log(user);
-          history.push("/dashboard");
+          if (user.id) {
+            loadUser(user);
+            history.push("/dashboard");
+          }
         });
     } catch (err) {
       console.log("error", err);
@@ -119,7 +126,7 @@ const Signup = ({ theme, toggleTheme }) => {
         <div>
           <Image src={signup} alt="Signin" />
         </div>
-        <LoginContainer>
+        <SignupContainer>
           <Title>Sign up</Title>
           <Form onSubmit={handleSubmitForm}>
             <FormContainer>
@@ -158,7 +165,7 @@ const Signup = ({ theme, toggleTheme }) => {
               .
             </Text>
           </Form>
-        </LoginContainer>
+        </SignupContainer>
       </Container>
       <Footer />
     </div>

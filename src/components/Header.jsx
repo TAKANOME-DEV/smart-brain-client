@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { User, ToggleTheme, Logo } from ".";
 
 const Nav = styled.nav`
-  position: fixed;
+  position: relative;
   width: 100%;
   display: flex;
-  background: ${({ theme }) => theme.body};
   padding: 20px 0;
+  margin-bottom: 100px;
+  background: ${({ theme }) => theme.body};
   box-shadow: ${({ theme }) => theme.boxShadow};
   transition: all 0.5s linear;
 `;
@@ -63,7 +64,7 @@ const Title = styled.p`
   color: ${({ theme }) => theme.text};
   left: 40%;
   @media screen and (max-width: 1060px) {
-    opacity: 0;
+    display: none;
   }
   @media screen and (min-width: 1061px) and (max-width: 1380px) {
     left: 20%;
@@ -81,6 +82,18 @@ const Header = ({ theme, toggleTheme }) => {
     setIsOpen(false);
   };
 
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  let location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/dashboard") {
+      setIsSignedIn(true);
+    } else {
+      setIsSignedIn(false);
+    }
+  }, [location]);
+
   return (
     <Nav>
       <Link to="/">
@@ -95,13 +108,22 @@ const Header = ({ theme, toggleTheme }) => {
           isOpen={isOpen}
           handleClick={handleClick}
           handleClose={handleClose}
+          isSignedIn={isSignedIn}
         />
-        <Link to="login">
-          <SecondaryButton>Login</SecondaryButton>
-        </Link>
-        <Link to="register">
-          <PrimaryButton>Signup</PrimaryButton>
-        </Link>
+        {isSignedIn ? (
+          <Link to="/login">
+            <PrimaryButton>Signout</PrimaryButton>
+          </Link>
+        ) : (
+          <>
+            <Link to="/login">
+              <SecondaryButton>Login</SecondaryButton>
+            </Link>
+            <Link to="/signup">
+              <PrimaryButton>Signup</PrimaryButton>
+            </Link>
+          </>
+        )}
       </Container>
     </Nav>
   );

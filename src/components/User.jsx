@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link, useLocation } from "react-router-dom";
 import { Modal } from ".";
 
 const Container = styled.div`
@@ -54,8 +55,23 @@ const Button = styled.button`
     transform: translateY(-5px);
   }
 `;
+const PrimaryButton = styled.button`
+  font-size: 30px;
+  padding: 15px 50px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.body};
+  border: none;
+  border-radius: 20px;
+  transition: 0.5s ease;
+  box-shadow: rgb(0 0 0 / 10%) 0px 5px 5px 0px;
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
 
-const User = ({ handleClick, handleClose, isOpen }) => {
+const User = ({ handleClick, handleClose, isOpen, isSignedIn }) => {
   return (
     <Container>
       <Icon
@@ -75,8 +91,20 @@ const User = ({ handleClick, handleClose, isOpen }) => {
       </Icon>
       <Modal open={isOpen}>
         <Close onClick={handleClose}>x</Close>
-        <Button>Login</Button>
-        <Button>Signup</Button>
+        {isSignedIn ? (
+          <Link to="/login">
+            <PrimaryButton>Signout</PrimaryButton>
+          </Link>
+        ) : (
+          <>
+            <Link to="/login">
+              <Button>Login</Button>
+            </Link>
+            <Link to="/register">
+              <Button>Signup</Button>
+            </Link>
+          </>
+        )}
       </Modal>
     </Container>
   );

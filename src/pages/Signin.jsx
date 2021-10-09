@@ -11,15 +11,17 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 const Image = styled.img`
-  margin-top: 200px;
   width: 450px;
   height: auto;
-`;
-const LoginContainer = styled.div`
-  margin-top: 200px;
+  margin-bottom: 50px;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 const Title = styled.h1`
   text-align: center;
+  letter-spacing: 3px;
+  font-size: 45px;
 `;
 const Form = styled.form`
   margin-top: 30px;
@@ -65,7 +67,7 @@ const Span = styled.span`
   text-decoration: underline;
 `;
 
-const Signin = ({ theme, toggleTheme }) => {
+const Signin = ({ theme, toggleTheme, loadUser }) => {
   const goToTop = () => {
     window.scrollTo(0, 0);
   };
@@ -83,20 +85,23 @@ const Signin = ({ theme, toggleTheme }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      })
+      const response = await fetch(
+        "https://smart-server-brain.herokuapp.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        }
+      )
         .then((res) => res.json())
         .then((user) => {
           if (user.id) {
-            console.log(user);
+            loadUser(user);
             history.push("/dashboard");
           }
         });
@@ -114,7 +119,7 @@ const Signin = ({ theme, toggleTheme }) => {
         <div>
           <Image src={login} alt="Signin" />
         </div>
-        <LoginContainer>
+        <div>
           <Title>Sign in</Title>
           <Form onSubmit={handleSubmitForm}>
             <FormContainer>
@@ -138,13 +143,13 @@ const Signin = ({ theme, toggleTheme }) => {
             <Button type="submit">Login</Button>
             <Text>
               Don't have a account?{" "}
-              <Link to="/register">
+              <Link to="/signup">
                 <Span>Sign up</Span>
               </Link>
               .
             </Text>
           </Form>
-        </LoginContainer>
+        </div>
       </Container>
       <Footer />
     </div>
