@@ -131,7 +131,7 @@ const Main = () => {
             Add A Picture Link And The Brain Detects The Face. Isn't That
             Interesting ??
           </Text>
-          <Link to="/register">
+          <Link to="/login">
             <Button>Get Started</Button>
           </Link>
         </Container>
