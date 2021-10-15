@@ -1,4 +1,4 @@
-## Preview : https://smart-app-brain.herokuapp.com/
+
 ## Backend : https://github.com/TAKANOME-DEV/smart-brain-backend
 # Getting Started with Create React App
 
