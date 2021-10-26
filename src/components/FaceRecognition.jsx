@@ -18,19 +18,30 @@ const Box = styled.div`
   align-items: center;
   cursor: pointer;
 `;
+const Error = styled.div`
+  color: red;
+  font-size: 20px;
+  margin-top: 20px;
+`;
 
-const FaceRecognition = ({ imageUrl, box }) => {
+const FaceRecognition = ({ imageUrl, box, error }) => {
   return (
     <Container>
-      <Face id="box" src={imageUrl} alt="" />
-      <Box
-        style={{
-          top: box.topRow,
-          left: box.leftCol,
-          bottom: box.bottomRow,
-          right: box.rightCol,
-        }}
-      ></Box>
+      {error ? (
+        <Error>{error}</Error>
+      ) : (
+        <>
+          <Face id="box" src={imageUrl} alt="" />
+          <Box
+            style={{
+              top: box.topRow,
+              left: box.leftCol,
+              bottom: box.bottomRow,
+              right: box.rightCol,
+            }}
+          ></Box>
+        </>
+      )}
     </Container>
   );
 };

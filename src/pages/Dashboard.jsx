@@ -26,6 +26,7 @@ const Dashboard = ({
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [box, setBox] = useState({});
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => setInput(e.target.value);
 
@@ -48,7 +49,7 @@ const Dashboard = ({
 
   const displayBox = (box) => setBox(box);
 
-  const handleInputSubmit = async () => {
+  const handleInputSubmit = () => {
     setImageUrl(input);
 
     const raw = JSON.stringify({
@@ -76,27 +77,34 @@ const Dashboard = ({
       body: raw,
     };
 
-    await fetch(
+    fetch(
       "https://api.clarifai.com/v2/models/f76196b43bbd45c99b4f3cd8e8b40a8a/versions/6dc7e46bc9124c5c8824be4822abe105/outputs",
       requestOptions
     )
       .then((res) => res.json())
       .then((data) => {
-        fetch("https://smart-server-brain.herokuapp.com/image", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: user.id,
-          }),
-        })
-          .then((res) => res.json())
-          .then((entry) => setUser(Object.assign(user, { entries: entry })))
-          .catch((err) => console.log(err));
-        displayBox(calculateFaceLocation(data));
+        if (data.status.description === "Failure") {
+          setError(data.outputs[0].status.details);
+        } else {
+          setError(null);
+          fetch("https://smart-server-brain.herokuapp.com/image", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: user.id,
+            }),
+          })
+            .then((res) => res.json())
+            .then((entry) => setUser(Object.assign(user, { entries: entry })))
+            .catch((err) => console.log(err));
+          displayBox(calculateFaceLocation(data));
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        setError("Ooops!! Something Went Wrong, Please Try Again")
+      );
   };
 
   return (
@@ -108,7 +116,7 @@ const Dashboard = ({
           handleInputChange={handleInputChange}
           handleSubmit={handleInputSubmit}
         />
-        <FaceRecognition imageUrl={imageUrl} box={box} />
+        <FaceRecognition imageUrl={imageUrl} box={box} error={error} />
       </Container>
       <Footer />
     </div>
