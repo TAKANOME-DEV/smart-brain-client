@@ -92,7 +92,7 @@ const User = ({ handleClick, handleClose, isOpen, isSignedIn }) => {
       <Modal open={isOpen}>
         <Close onClick={handleClose}>x</Close>
         {isSignedIn ? (
-          <Link to="/login">
+          <Link to="/">
             <PrimaryButton>Signout</PrimaryButton>
           </Link>
         ) : (

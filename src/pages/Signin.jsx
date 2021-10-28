@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { Header, Footer, EmailIcon, PasswordIcon } from "../components";
 import { login } from "../assets";
+import { Context } from "../context/GlobalState";
 
 const Container = styled.div`
   display: flex;
@@ -66,12 +68,19 @@ const Span = styled.span`
   color: ${({ theme }) => theme.text};
   text-decoration: underline;
 `;
+const Error = styled.div`
+  color: red;
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center;
+`;
 
-const Signin = ({ theme, toggleTheme, loadUser }) => {
-  const goToTop = () => {
-    window.scrollTo(0, 0);
-  };
-  goToTop();
+const Signin = ({ theme, toggleTheme }) => {
+  // const goToTop = () => {
+  //   window.scrollTo(0, 0);
+  // };
+  // goToTop();
+  const { loadUser, error, showError } = useContext(Context);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,30 +94,22 @@ const Signin = ({ theme, toggleTheme, loadUser }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
+      const res = await axios.post(
         "https://smart-server-brain.herokuapp.com/login",
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-          }),
+          email: email,
+          password: password,
         }
-      )
-        .then((res) => res.json())
-        .then((user) => {
-          if (user.id) {
-            loadUser(user);
-            history.push("/dashboard");
-          }
-        });
-
-      return response;
+      );
+      if (res.data.id) {
+        loadUser(res.data);
+        showError(null);
+        history.push("/dashboard");
+      }
     } catch (err) {
-      console.log(err);
+      if (err.response) {
+        showError(err.response.data);
+      }
     }
   };
 
@@ -141,6 +142,7 @@ const Signin = ({ theme, toggleTheme, loadUser }) => {
               />
             </FormContainer>
             <Button type="submit">Login</Button>
+            {error && <Error>{error}</Error>}
             <Text>
               Don't have a account?{" "}
               <Link to="/signup">

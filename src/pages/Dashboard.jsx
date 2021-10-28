@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { Context } from "../context/GlobalState";
 import {
   Header,
   Footer,
@@ -15,18 +17,12 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Dashboard = ({
-  theme,
-  toggleTheme,
-  username,
-  entries,
-  setUser,
-  user,
-}) => {
+const Dashboard = ({ theme, toggleTheme }) => {
+  const { user, loadUser, error, showError } = useContext(Context);
+
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [box, setBox] = useState({});
-  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => setInput(e.target.value);
 
@@ -49,69 +45,64 @@ const Dashboard = ({
 
   const displayBox = (box) => setBox(box);
 
-  const handleInputSubmit = () => {
+  const handleInputSubmit = async () => {
     setImageUrl(input);
-
-    const raw = JSON.stringify({
-      user_app_id: {
-        user_id: process.env.USER_ID,
-        app_id: process.env.APP_ID,
-      },
-      inputs: [
-        {
-          data: {
-            image: {
-              url: input,
+    try {
+      const raw = JSON.stringify({
+        user_app_id: {
+          user_id: process.env.USER_ID,
+          app_id: process.env.APP_ID,
+        },
+        inputs: [
+          {
+            data: {
+              image: {
+                url: input,
+              },
             },
           },
+        ],
+      });
+
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization: "Key 1902138e82dd4ae9b3cd265cdb66bd4c", // It is just a test key :)
         },
-      ],
-    });
+        body: raw,
+      };
 
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        Authorization: "Key 1902138e82dd4ae9b3cd265cdb66bd4c", // It is just a test key :)
-      },
-      body: raw,
-    };
-
-    fetch(
-      "https://api.clarifai.com/v2/models/f76196b43bbd45c99b4f3cd8e8b40a8a/versions/6dc7e46bc9124c5c8824be4822abe105/outputs",
-      requestOptions
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status.description === "Failure") {
-          setError(data.outputs[0].status.details);
-        } else {
-          setError(null);
-          fetch("https://smart-server-brain.herokuapp.com/image", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              id: user.id,
-            }),
-          })
-            .then((res) => res.json())
-            .then((entry) => setUser(Object.assign(user, { entries: entry })))
-            .catch((err) => console.log(err));
-          displayBox(calculateFaceLocation(data));
-        }
-      })
-      .catch((err) =>
-        setError("Ooops!! Something Went Wrong, Please Try Again")
+      const response = await fetch(
+        "https://api.clarifai.com/v2/models/f76196b43bbd45c99b4f3cd8e8b40a8a/versions/6dc7e46bc9124c5c8824be4822abe105/outputs",
+        requestOptions
       );
+      const data = await response.json();
+      if (data.status.code === 10000) {
+        showError(null);
+        const count = await axios.put(
+          "https://smart-server-brain.herokuapp.com/image",
+          {
+            id: user.id,
+          }
+        );
+
+        loadUser(Object.assign(user, { entries: count.data }));
+
+        displayBox(calculateFaceLocation(data));
+      } else {
+        showError(data.outputs[0].status.details);
+      }
+    } catch (err) {
+      console.log("err", err);
+    }
   };
 
   return (
     <div>
       <Header theme={theme} toggleTheme={toggleTheme} />
       <Container>
-        <Rank username={username} entries={entries} />
+        <Rank />
         <ImageLinkForm
           handleInputChange={handleInputChange}
           handleSubmit={handleInputSubmit}

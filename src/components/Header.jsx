@@ -111,7 +111,7 @@ const Header = ({ theme, toggleTheme }) => {
           isSignedIn={isSignedIn}
         />
         {isSignedIn ? (
-          <Link to="/login">
+          <Link to="/">
             <PrimaryButton>Signout</PrimaryButton>
           </Link>
         ) : (
