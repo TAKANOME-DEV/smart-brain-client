@@ -19,9 +19,7 @@ const Text = styled.p`
 const Footer = () => {
   return (
     <Container>
-      <Text>
-        Copyright © 2021 <strong>takanome_dev</strong> - All Rights Reserved
-      </Text>
+      <Text><strong>takanome_dev</strong> &copy;</Text>
     </Container>
   );
 };
