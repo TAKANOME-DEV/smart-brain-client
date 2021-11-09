@@ -15,6 +15,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 200px 0;
 `;
 
 const Dashboard = ({ theme, toggleTheme }) => {
