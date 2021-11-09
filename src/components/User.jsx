@@ -1,75 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { Modal } from ".";
-
-const Container = styled.div`
-  margin-left: 50px;
-`;
-const Icon = styled.svg`
-  transition: all 0.5s linear;
-  cursor: pointer;
-  color: ${({ theme }) => theme.text};
-  position: absolute;
-  display: none;
-  width: 30%;
-  &:hover {
-    transform: translateY(-3px);
-  }
-  @media screen and (max-width: 700px) {
-    display: initial;
-    top: 0;
-    right: 5%;
-  }
-`;
-const Close = styled.button`
-  font-size: 25px;
-  font-weight: bold;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  padding: 2px 10px;
-  margin-bottom: 20px;
-  color: ${({ theme }) => theme.body};
-  background-color: ${({ theme }) => theme.text};
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.5s linear;
-  &:hover {
-    transform: translateY(-3px);
-  }
-`;
-const Button = styled.button`
-  font-size: 30px;
-  padding: 15px 50px;
-  margin: 10px;
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.text};
-  color: ${({ theme }) => theme.body};
-  border: none;
-  border-radius: 20px;
-  transition: 0.5s ease;
-  box-shadow: rgb(0 0 0 / 40%) 0px 10px 5px 0px;
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-const PrimaryButton = styled.button`
-  font-size: 30px;
-  padding: 15px 50px;
-  margin-top: 20px;
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.text};
-  color: ${({ theme }) => theme.body};
-  border: none;
-  border-radius: 20px;
-  transition: 0.5s ease;
-  box-shadow: rgb(0 0 0 / 10%) 0px 5px 5px 0px;
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
+import {
+  Container,
+  Icon,
+  Close,
+  Primary,
+  Secondary,
+} from "./styles/User.styled";
 
 const User = ({ handleClick, handleClose, isOpen, isSignedIn }) => {
   return (
@@ -93,15 +31,15 @@ const User = ({ handleClick, handleClose, isOpen, isSignedIn }) => {
         <Close onClick={handleClose}>x</Close>
         {isSignedIn ? (
           <Link to="/">
-            <PrimaryButton>Signout</PrimaryButton>
+            <Secondary>Signout</Secondary>
           </Link>
         ) : (
           <>
             <Link to="/login">
-              <Button>Login</Button>
+              <Secondary>Login</Secondary>
             </Link>
-            <Link to="/register">
-              <Button>Signup</Button>
+            <Link to="/signup">
+              <Primary>Signup</Primary>
             </Link>
           </>
         )}

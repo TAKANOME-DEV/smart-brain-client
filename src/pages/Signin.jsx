@@ -1,85 +1,29 @@
 import React, { useState, useContext } from "react";
-import styled from "styled-components";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import { Header, Footer, EmailIcon, PasswordIcon } from "../components";
+import { Header, Footer } from "../components";
 import { login } from "../assets";
 import { Context } from "../context/GlobalState";
+import {
+  Container,
+  Image,
+  UserInfo,
+  Title,
+  Form,
+  Label,
+  Input,
+  Button,
+  Text,
+  Span,
+  Error,
+} from "../components/styles/SigninSignup.styled";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-const Image = styled.img`
-  width: 450px;
-  height: auto;
-  margin-bottom: 50px;
-  @media (max-width: 500px) {
-    width: 100%;
-  }
-`;
-const Title = styled.h1`
-  text-align: center;
-  letter-spacing: 3px;
-  font-size: 45px;
-`;
-const Form = styled.form`
-  margin-top: 30px;
-`;
-const FormContainer = styled.div`
-  display: grid;
-  grid-template-columns: 15% 85%;
-  width: 300px;
-  height: 40px;
-  border-radius: 30px;
-  background-color: #fff;
-  padding: 0 15px;
-  margin: 20px 0;
-`;
-const Input = styled.input`
-  border: none;
-  outline: none;
-  font-size: 20px;
-`;
-const Button = styled.button`
-  width: 100%;
-  padding: 10px 0;
-  border-radius: 20px;
-  background-color: ${({ theme }) => theme.text};
-  color: ${({ theme }) => theme.body};
-  font-size: 25px;
-  border: none;
-  outline: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.5s;
-  &:hover {
-    transform: translateY(-3px);
-  }
-`;
-const Text = styled.p`
-  margin-top: 20px;
-  font-size: 20px;
-`;
-const Span = styled.span`
-  font-size: 20px;
-  color: ${({ theme }) => theme.text};
-  text-decoration: underline;
-`;
-const Error = styled.div`
-  color: red;
-  font-size: 20px;
-  margin-top: 10px;
-  text-align: center;
-`;
-
-const Signin = ({ theme, toggleTheme }) => {
+const Signin = () => {
   // const goToTop = () => {
   //   window.scrollTo(0, 0);
   // };
   // goToTop();
+
   const { loadUser, error, showError } = useContext(Context);
 
   const [email, setEmail] = useState("");
@@ -115,32 +59,22 @@ const Signin = ({ theme, toggleTheme }) => {
 
   return (
     <div>
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      <Header />
       <Container>
         <div>
           <Image src={login} alt="Signin" />
         </div>
-        <div>
+        <UserInfo>
           <Title>Sign in</Title>
           <Form onSubmit={handleSubmitForm}>
-            <FormContainer>
-              <EmailIcon />
-              <Input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={handleInputMail}
-              />
-            </FormContainer>
-            <FormContainer>
-              <PasswordIcon />
-              <Input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={handleInputPassword}
-              />
-            </FormContainer>
+            <Label htmlFor="email">Email :</Label>
+            <Input type="email" value={email} onChange={handleInputMail} />
+            <Label htmlFor="password">Password :</Label>
+            <Input
+              type="password"
+              value={password}
+              onChange={handleInputPassword}
+            />
             <Button type="submit">Login</Button>
             {error && <Error>{error}</Error>}
             <Text>
@@ -148,10 +82,9 @@ const Signin = ({ theme, toggleTheme }) => {
               <Link to="/signup">
                 <Span>Sign up</Span>
               </Link>
-              .
             </Text>
           </Form>
-        </div>
+        </UserInfo>
       </Container>
       <Footer />
     </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import { Header, Main, Footer } from "../components";
 
-const Home = ({ theme, toggleTheme }) => {
+const Home = () => {
   return (
     <div>
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      <Header />
       <Main />
       <Footer />
     </div>

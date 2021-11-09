@@ -1,25 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import { copyright } from "../assets";
 
-const Container = styled.div`
+const Container = styled.footer`
   display: flex;
   justify-content: center;
-  margin-top: 190px;
-  margin-bottom: 60px;
-  margin-left: 20px;
-  margin-right: 20px;
-  @media screen and (max-width: 1150px) {
-    margin-top: 150px;
-  }
+  align-items: center;
+  background: #2f303a;
+  box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.15);
+  padding: 15px 0;
+  margin-top: 80px;
 `;
-const Text = styled.p`
-  font-size: 25px
+const Image = styled.img`
+  width: 313px;
+  height: 44px;
 }`;
 
 const Footer = () => {
   return (
     <Container>
-      <Text><strong>takanome_dev</strong> &copy;</Text>
+      <Image src={copyright} alt="Copyright" />
     </Container>
   );
 };
