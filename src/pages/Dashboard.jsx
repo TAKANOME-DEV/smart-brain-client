@@ -101,7 +101,7 @@ const Dashboard = ({ theme, toggleTheme }) => {
 
   return (
     <div>
-      <Header theme={theme} toggleTheme={toggleTheme} />
+      <Header />
       <Container>
         <Rank />
         <ImageLinkForm

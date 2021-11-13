@@ -41,7 +41,7 @@ const Header = () => {
             isSignedIn={isSignedIn}
           />
           {isSignedIn ? (
-            <Link to="/">
+            <Link to="/login">
               <Secondary>Signout</Secondary>
             </Link>
           ) : (
