@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: fixed;
-  background-color: #2F303A};
+  background-color: #2f303a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ const Container = styled.div`
   right: 2%;
   padding: 30px;
   border-radius: 20px;
-  box-shadow: rgb(0 0 0 / 20%) 0px 9px 9px 5px;;
+  box-shadow: rgb(0 0 0 / 20%) 0px 9px 9px 5px;
 `;
 const Overlay = styled.div`
   position: fixed;
