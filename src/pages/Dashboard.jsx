@@ -18,7 +18,7 @@ const Container = styled.div`
   margin: 200px 0;
 `;
 
-const Dashboard = ({ theme, toggleTheme }) => {
+const Dashboard = () => {
   const { user, loadUser, error, showError } = useContext(Context);
 
   const [input, setInput] = useState("");

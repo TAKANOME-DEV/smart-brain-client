@@ -1,5 +1,5 @@
+# View Backend : [Smart Brain Backend](https://github.com/TAKANOME-DEV/smart-brain-backend)
 
-## Backend : https://github.com/TAKANOME-DEV/smart-brain-backend
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
