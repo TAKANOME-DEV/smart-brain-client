@@ -68,9 +68,15 @@ const Signin = () => {
           <Title>Sign in</Title>
           <Form onSubmit={handleSubmitForm}>
             <Label htmlFor="email">Email :</Label>
-            <Input type="email" value={email} onChange={handleInputMail} />
+            <Input
+              required
+              type="email"
+              value={email}
+              onChange={handleInputMail}
+            />
             <Label htmlFor="password">Password :</Label>
             <Input
+              required
               type="password"
               value={password}
               onChange={handleInputPassword}

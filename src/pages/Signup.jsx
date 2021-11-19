@@ -72,14 +72,21 @@ const Signup = () => {
           <Form onSubmit={handleSubmitForm}>
             <Label htmlFor="username">Username :</Label>
             <Input
+              required
               type="text"
               value={username}
               onChange={handleUsernameChange}
             />
             <Label htmlFor="email">Email :</Label>
-            <Input type="email" value={email} onChange={handleEmailChange} />
+            <Input
+              required
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
             <Label htmlFor="password">Password :</Label>
             <Input
+              required
               type="password"
               value={password}
               onChange={handlePasswordChange}
