@@ -1,4 +1,6 @@
-# View Backend : [Smart Brain Backend](https://github.com/TAKANOME-DEV/smart-brain-backend)
+# This project is using [Commitlint](https://github.com/conventional-changelog/commitlint) for linting commit message and pull request.
+
+# [This guide demonstrates how to use it.](https://commitlint.js.org/#/guides-local-setup)
 
 # Getting Started with Create React App
 
@@ -70,3 +72,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# View Backend : [Smart Brain Backend](https://github.com/TAKANOME-DEV/smart-brain-backend)
