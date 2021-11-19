@@ -1,8 +1,8 @@
-# This project is using [Commitlint](https://github.com/conventional-changelog/commitlint) for linting commit message and pull request.
-
-# [This guide demonstrates how to use it.](https://commitlint.js.org/#/guides-local-setup)
-
 # Getting Started with Create React App
+
+## This project is using [Commitlint](https://github.com/conventional-changelog/commitlint) for linting commit message and pull request.
+
+## [This guide demonstrates how to use it.](https://commitlint.js.org/#/guides-local-setup)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
