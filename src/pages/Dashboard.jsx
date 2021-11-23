@@ -1,13 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Context } from "../context/GlobalState";
-import {
-  Header,
-  Footer,
-  Rank,
-  ImageLinkForm,
-  FaceRecognition,
-} from "../components";
+import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -100,18 +94,14 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <Container>
-        <Rank />
-        <ImageLinkForm
-          handleInputChange={handleInputChange}
-          handleSubmit={handleInputSubmit}
-        />
-        <FaceRecognition imageUrl={imageUrl} box={box} error={error} />
-      </Container>
-      <Footer />
-    </div>
+    <Container>
+      <Rank />
+      <ImageLinkForm
+        handleInputChange={handleInputChange}
+        handleSubmit={handleInputSubmit}
+      />
+      <FaceRecognition imageUrl={imageUrl} box={box} error={error} />
+    </Container>
   );
 };
 

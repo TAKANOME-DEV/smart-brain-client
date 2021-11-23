@@ -1,8 +1,8 @@
 import React from "react"; // createRef
 import { Switch, Route, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Home, Signin, Signup, Dashboard } from "./pages";
-import { GlobalStyles } from "./components";
+import { Signin, Signup, Dashboard } from "./pages";
+import { Main, Footer, GlobalStyles, Header } from "./components";
 import { Provider } from "./context/GlobalState";
 
 const App = () => {
@@ -13,6 +13,7 @@ const App = () => {
   return (
     <Provider>
       <GlobalStyles />
+      <Header />
       <TransitionGroup>
         <CSSTransition
           key={location.key}
@@ -21,13 +22,14 @@ const App = () => {
           // nodeRef={ref}
         >
           <Switch location={location}>
-            <Route exact path="/" children={<Home />} />
+            <Route exact path="/" children={<Main />} />
             <Route path="/login" children={<Signin />} />
             <Route path="/signup" children={<Signup />} />
             <Route path="/dashboard" children={<Dashboard />} />
           </Switch>
         </CSSTransition>
       </TransitionGroup>
+      <Footer />
     </Provider>
   );
 };

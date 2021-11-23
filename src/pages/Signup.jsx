@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Header, Footer } from "../components";
 import { signup } from "../assets";
 import axios from "axios";
 import { Context } from "../context/GlobalState";
@@ -61,49 +60,45 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <Header />
-      <Container>
-        <div>
-          <Image src={signup} alt="Signin" />
-        </div>
-        <UserInfo>
-          <Title>Sign up</Title>
-          <Form onSubmit={handleSubmitForm}>
-            <Label htmlFor="username">Username :</Label>
-            <Input
-              required
-              type="text"
-              value={username}
-              onChange={handleUsernameChange}
-            />
-            <Label htmlFor="email">Email :</Label>
-            <Input
-              required
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            <Label htmlFor="password">Password :</Label>
-            <Input
-              required
-              type="password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <Button type="submit">Sign up</Button>
-            {error && <Error>{error}</Error>}
-            <Text>
-              Already have a account?{" "}
-              <Link to="/login">
-                <Span>Sign in</Span>
-              </Link>
-            </Text>
-          </Form>
-        </UserInfo>
-      </Container>
-      <Footer />
-    </div>
+    <Container>
+      <div>
+        <Image src={signup} alt="Signin" />
+      </div>
+      <UserInfo>
+        <Title>Sign up</Title>
+        <Form onSubmit={handleSubmitForm}>
+          <Label htmlFor="username">Username :</Label>
+          <Input
+            required
+            type="text"
+            value={username}
+            onChange={handleUsernameChange}
+          />
+          <Label htmlFor="email">Email :</Label>
+          <Input
+            required
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <Label htmlFor="password">Password :</Label>
+          <Input
+            required
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <Button type="submit">Sign up</Button>
+          {error && <Error>{error}</Error>}
+          <Text>
+            Already have a account?{" "}
+            <Link to="/login">
+              <Span>Sign in</Span>
+            </Link>
+          </Text>
+        </Form>
+      </UserInfo>
+    </Container>
   );
 };
 
