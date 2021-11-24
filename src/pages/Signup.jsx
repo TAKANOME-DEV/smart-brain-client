@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../assets";
 import axios from "axios";
 import { Context } from "../context/GlobalState";
@@ -18,11 +18,6 @@ import {
 } from "../components/styles/SigninSignup.styled";
 
 const Signup = () => {
-  // const goToTop = () => {
-  //   window.scrollTo(0, 0);
-  // };
-  // goToTop();
-
   const { error, showError, loadUser } = useContext(Context);
 
   const [username, setUsername] = useState("");
@@ -33,7 +28,7 @@ const Signup = () => {
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -50,7 +45,7 @@ const Signup = () => {
       if (res.data.id) {
         loadUser(res.data);
         showError(null);
-        history.push("/dashboard");
+        navigate("/dashboard");
       }
     } catch (err) {
       if (err.response) {

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../assets";
 import { Context } from "../context/GlobalState";
 import {
@@ -31,7 +31,7 @@ const Signin = () => {
   const handleInputMail = (e) => setEmail(e.target.value);
   const handleInputPassword = (e) => setPassword(e.target.value);
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ const Signin = () => {
       if (res.data.id) {
         loadUser(res.data);
         showError(null);
-        history.push("/dashboard");
+        navigate("/dashboard");
       }
     } catch (err) {
       if (err.response) {
