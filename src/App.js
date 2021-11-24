@@ -1,10 +1,21 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Signin, Signup, Dashboard } from "./pages";
 import { Main, Footer, GlobalStyles, Header } from "./components";
 import { Provider } from "./context/GlobalState";
+// Progress Bar
+import NProgress from "nprogress";
+import "./components/styles/nprogress.css";
 
 const App = () => {
+  let location = useLocation();
+
+  useEffect(() => {
+    NProgress.start();
+
+    return NProgress.done(true);
+  }, [location.pathname]);
+
   return (
     <Provider>
       <GlobalStyles />
