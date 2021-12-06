@@ -18,10 +18,12 @@ import {
 } from "../components/styles/SigninSignup.styled";
 
 const Signin = () => {
-  // const goToTop = () => {
-  //   window.scrollTo(0, 0);
-  // };
-  // goToTop();
+  /**
+   *? const goToTop = () => {
+   *?   window.scrollTo(0, 0);
+   *? };
+   *? goToTop();
+   */
 
   const { loadUser, error, showError } = useContext(Context);
 

@@ -14,7 +14,7 @@ const Container = styled.footer`
 const Image = styled.img`
   width: 313px;
   height: 44px;
-}`;
+`;
 
 const Footer = () => {
   return (

@@ -3,7 +3,11 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Signin, Signup, Dashboard } from "./pages";
 import { Main, Footer, GlobalStyles, Header } from "./components";
 import { Provider } from "./context/GlobalState";
-// Progress Bar
+
+/**
+ * @ProgressBar
+ */
+
 import NProgress from "nprogress";
 import "./components/styles/nprogress.css";
 

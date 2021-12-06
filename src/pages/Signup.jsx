@@ -18,6 +18,13 @@ import {
 } from "../components/styles/SigninSignup.styled";
 
 const Signup = () => {
+  /**
+   *? const goToTop = () => {
+   *?   window.scrollTo(0, 0);
+   *? };
+   *? goToTop();
+   */
+
   const { error, showError, loadUser } = useContext(Context);
 
   const [username, setUsername] = useState("");
