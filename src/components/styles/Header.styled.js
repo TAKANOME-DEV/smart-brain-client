@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Nav
 export const Nav = styled.nav`
   position: fixed;
   top: 0;
@@ -13,7 +12,6 @@ export const Nav = styled.nav`
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 `;
 
-// Secondary Button
 export const Secondary = styled.button`
   font-size: 28px;
   line-height: 32px;
@@ -31,7 +29,6 @@ export const Secondary = styled.button`
   }
 `;
 
-// Primary Button
 export const Primary = styled.button`
   font-size: 28px;
   line-height: 32px;
@@ -49,5 +46,4 @@ export const Primary = styled.button`
   }
 `;
 
-// Logo Image
 export const Logo = styled.img``;

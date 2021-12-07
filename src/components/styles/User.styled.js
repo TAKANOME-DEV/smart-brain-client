@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
-// COntainer
 export const Container = styled.div`
   margin-left: 50px;
 `;
 
-// Icon
 export const Icon = styled.svg`
   transition: all 0.5s linear;
   cursor: pointer;
@@ -21,7 +19,6 @@ export const Icon = styled.svg`
   }
 `;
 
-// Close
 export const Close = styled.button`
   font-size: 25px;
   font-weight: bold;
@@ -41,7 +38,6 @@ export const Close = styled.button`
   }
 `;
 
-// Secondary Button
 export const Secondary = styled.button`
   font-size: 28px;
   line-height: 32px;
@@ -57,7 +53,6 @@ export const Secondary = styled.button`
   }
 `;
 
-// Primary Button
 export const Primary = styled.button`
   font-size: 28px;
   line-height: 32px;

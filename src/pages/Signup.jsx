@@ -67,7 +67,7 @@ const Signup = () => {
         <Image src={signup} alt="Signin" />
       </div>
       <UserInfo>
-        <Title>Sign up</Title>
+        <Title>Signup</Title>
         <Form onSubmit={handleSubmitForm}>
           <Label htmlFor="username">Username :</Label>
           <Input

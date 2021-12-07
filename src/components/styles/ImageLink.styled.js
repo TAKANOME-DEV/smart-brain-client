@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Container
 export const Container = styled.div`
   width: 800px;
   height: 90px;
@@ -22,7 +21,6 @@ export const Container = styled.div`
   }
 `;
 
-// Input
 export const Input = styled.input`
   width: 70%;
   height: 60%;
@@ -37,7 +35,6 @@ export const Input = styled.input`
   }
 `;
 
-// Button
 export const Button = styled.button`
   font-size: 25px;
   font-weight: bold;

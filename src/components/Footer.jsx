@@ -9,7 +9,7 @@ const Container = styled.footer`
   background: #2f303a;
   box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.15);
   padding: 15px 0;
-  margin-top: 80px;
+  margin: 0;
 `;
 const Image = styled.img`
   width: 313px;

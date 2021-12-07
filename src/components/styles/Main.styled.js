@@ -1,32 +1,26 @@
 import styled from "styled-components";
 
-// Container
 export const Container = styled.div`
-  margin: 100px 50px 0 50px;
+  width: 100%;
   display: grid;
-  grid-column-gap: 10em;
-  grid-template-columns: auto auto;
-  @media (min-width: 600px) and (max-width: 850px) {
-    grid-column-gap: 5em;
-  }
-  @media (max-width: 590px) {
-    display: grid;
-    grid-column-gap: 0px;
-    grid-template-columns: auto;
-    margin-top: 15em;
+  gap: 80px;
+  grid-template-columns: 1fr 2fr;
+  margin: 0;
+  @media screen and (max-width: 560px) {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 `;
 
-// Image
 export const Image = styled.img`
   width: 100%;
-  @media (max-width: 590px) {
+  @media (max-width: 560px) {
     display: none;
   }
 `;
 
-// Paragraphe
 export const Para = styled.div`
+  width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -34,60 +28,38 @@ export const Para = styled.div`
   flex-direction: column;
 `;
 
-// Title
 export const Title = styled.p`
   font-weight: bold;
-  font-size: 64px;
-  line-height: 68px;
+  font-size: 50px;
   color: #ffffff;
-  @media (min-width: 600px) and (max-width: 850px) {
+  @media screen and (max-width: 700px) {
     font-size: 40px;
-    line-height: 44px;
-  }
-  @media (max-width: 599px) {
-    font-size: 32px;
-    line-height: 36px;
   }
 `;
 
-// Text
 export const Text = styled.p`
   font-weight: bold;
-  font-size: 40px;
-  line-height: 44px;
-  margin: 50px 0;
+  font-size: 30px;
+  margin: 20px 0;
   text-align: center;
   color: #ffffff;
-  @media (min-width: 600px) and (max-width: 850px) {
-    font-size: 28px;
-    line-height: 32px;
-  }
-  @media (max-width: 599px) {
-    font-size: 22px;
-    line-height: 26px;
+  @media screen and (max-width: 700px) {
+    font-size: 25px;
   }
 `;
 
-// Button
 export const Button = styled.button`
-  padding: 10px 100px;
+  padding: 10px 50px;
   font-weight: bold;
-  font-size: 40px;
-  line-height: 44px;
+  font-size: 30px;
   background: #ffffff;
   border-radius: 20px;
   color: #2f303a;
   cursor: pointer;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.39);
   text-align: center;
-  @media (min-width: 600px) and (max-width: 850px) {
-    font-size: 28px;
-    line-height: 32px;
-    padding: 10px 70px;
-  }
-  @media (max-width: 599px) {
-    font-size: 22px;
-    line-height: 26px;
-    padding: 10px 70px;
+  @media screen and (max-width: 700px) {
+    font-size: 25px;
+    padding: 10px 30px;
   }
 `;

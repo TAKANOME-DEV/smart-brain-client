@@ -10,6 +10,12 @@ import { Provider } from "./context/GlobalState";
 
 import NProgress from "nprogress";
 import "./components/styles/nprogress.css";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  max-width: 1000px;
+  margin: 100px auto;
+`;
 
 const App = () => {
   let location = useLocation();
@@ -24,12 +30,14 @@ const App = () => {
     <Provider>
       <GlobalStyles />
       <Header />
-      <Routes>
-        <Route exact path="/" element={<Main />} />
-        <Route path="/login" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
+      <Wrapper>
+        <Routes>
+          <Route exact path="/" element={<Main />} />
+          <Route path="/login" element={<Signin />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Wrapper>
       <Footer />
     </Provider>
   );
