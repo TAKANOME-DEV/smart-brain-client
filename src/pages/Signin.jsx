@@ -64,7 +64,7 @@ const Signin = () => {
         <Image src={login} alt="Signin" />
       </div>
       <UserInfo>
-        <Title>Sign in</Title>
+        <Title>Signin</Title>
         <Form onSubmit={handleSubmitForm}>
           <Label htmlFor="email">Email :</Label>
           <Input
