@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { smLogo } from "../assets";
 import { User } from ".";
-import { Nav, Primary, Secondary, Logo } from "./styles/Header.styled";
+import {
+  Wrapper,
+  Nav,
+  Primary,
+  Secondary,
+  Logo,
+  Buttons,
+} from "./styles/Header.styled";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,12 +35,12 @@ const Header = () => {
   }, [location]);
 
   return (
-    <div>
+    <Wrapper>
       <Nav>
         <Link to="/">
           <Logo src={smLogo} alt="Smart Brain Logo" />
         </Link>
-        <div>
+        <Buttons>
           <User
             isOpen={isOpen}
             handleClick={handleClick}
@@ -54,9 +61,9 @@ const Header = () => {
               </Link>
             </>
           )}
-        </div>
+        </Buttons>
       </Nav>
-    </div>
+    </Wrapper>
   );
 };
 
