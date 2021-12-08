@@ -1,20 +1,25 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div``;
+
 export const Nav = styled.nav`
   position: fixed;
   top: 0;
   width: 100%;
   padding: 10px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
   background: #2f303a;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 `;
 
+export const Buttons = styled.div`
+  justify-self: flex-end;
+  align-self: center;
+`;
+
 export const Secondary = styled.button`
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 25px;
   padding: 5px 20px;
   color: #fff;
   background-color: #2f303a;
@@ -30,8 +35,7 @@ export const Secondary = styled.button`
 `;
 
 export const Primary = styled.button`
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 25px;
   padding: 5px 20px;
   color: #2f303a;
   background-color: #fff;
