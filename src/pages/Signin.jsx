@@ -1,8 +1,11 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+//* Image
 import { login } from "../assets";
+//* Context
 import { Context } from "../context/GlobalState";
+//* Styles
 import {
   Container,
   Image,
@@ -18,13 +21,6 @@ import {
 } from "../components/styles/SigninSignup.styled";
 
 const Signin = () => {
-  /**
-   *? const goToTop = () => {
-   *?   window.scrollTo(0, 0);
-   *? };
-   *? goToTop();
-   */
-
   const { loadUser, error, showError } = useContext(Context);
 
   const [email, setEmail] = useState("");

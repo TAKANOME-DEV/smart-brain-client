@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+//* Image
 import { smLogo } from "../assets";
+//* SVG
 import { User } from ".";
+//* Styles
 import {
   Wrapper,
   Nav,
@@ -13,16 +16,10 @@ import {
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = () => {
-    setIsOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
   const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const handleClick = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
 
   let location = useLocation();
 

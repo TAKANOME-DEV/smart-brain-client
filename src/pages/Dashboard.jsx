@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
-import { Context } from "../context/GlobalState";
-import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 import styled from "styled-components";
+import axios from "axios";
+//* Context
+import { Context } from "../context/GlobalState";
+//* Components
+import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 
 const Container = styled.div`
   display: flex;
@@ -13,13 +15,6 @@ const Container = styled.div`
 `;
 
 const Dashboard = () => {
-  /**
-   *? const goToTop = () => {
-   *?   window.scrollTo(0, 0);
-   *? };
-   *? goToTop();
-   */
-
   const { user, loadUser, error, showError } = useContext(Context);
 
   const [input, setInput] = useState("");
@@ -70,7 +65,7 @@ const Dashboard = () => {
         method: "POST",
         headers: {
           Accept: "application/json",
-          Authorization: "Key 1902138e82dd4ae9b3cd265cdb66bd4c", //* It is just a test key :)
+          Authorization: "Key 1902138e82dd4ae9b3cd265cdb66bd4c", //* Test Key :)
         },
         body: raw,
       };

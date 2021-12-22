@@ -1,4 +1,5 @@
 import React from "react";
+//* Styles
 import { Container, Error, Face, Box } from "./styles/FaceRecognition.styled";
 
 const FaceRecognition = ({ imageUrl, box, error }) => {

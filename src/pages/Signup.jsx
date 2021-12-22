@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signup } from "../assets";
 import axios from "axios";
+//* Image
+import { signup } from "../assets";
+//* Context
 import { Context } from "../context/GlobalState";
+//* Styles
 import {
   Container,
   Image,
@@ -18,13 +21,6 @@ import {
 } from "../components/styles/SigninSignup.styled";
 
 const Signup = () => {
-  /**
-   *? const goToTop = () => {
-   *?   window.scrollTo(0, 0);
-   *? };
-   *? goToTop();
-   */
-
   const { error, showError, loadUser } = useContext(Context);
 
   const [username, setUsername] = useState("");

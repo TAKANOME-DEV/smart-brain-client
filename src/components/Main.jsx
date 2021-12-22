@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+//* Image
 import { welcome } from "../assets";
+//* Styles
 import {
   Container,
   Image,

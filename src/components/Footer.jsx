@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+//* Image
 import { copyright } from "../assets";
 
 const Container = styled.footer`

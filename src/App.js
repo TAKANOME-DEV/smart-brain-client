@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import styled from "styled-components";
+//* Pages
 import { Signin, Signup, Dashboard } from "./pages";
+//* Components
 import { Main, Footer, GlobalStyles, Header } from "./components";
+//* Provider
 import { Provider } from "./context/GlobalState";
-
-/**
- * @ProgressBar
- */
-
+//* Progress Bar
 import NProgress from "nprogress";
 import "./components/styles/nprogress.css";
-import styled from "styled-components";
 
 const Wrapper = styled.div`
   max-width: 1000px;
