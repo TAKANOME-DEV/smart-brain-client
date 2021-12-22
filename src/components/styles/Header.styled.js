@@ -40,6 +40,7 @@ export const Primary = styled.button`
   color: #2f303a;
   background-color: #fff;
   border-radius: 10px;
+  border: none;
   cursor: pointer;
   margin-left: 20px;
   &:hover {

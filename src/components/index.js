@@ -7,4 +7,5 @@ export { default as Rank } from "./Rank";
 export { default as RequireAuth } from "./RequireAuth";
 export { default as ImageLinkForm } from "./ImageLinkForm";
 export { default as FaceRecognition } from "./FaceRecognition";
+export { default as NotFound } from "./404";
 export { default as GlobalStyles } from "./styles/Global";

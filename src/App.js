@@ -4,7 +4,14 @@ import styled from "styled-components";
 //* Pages
 import { Signin, Signup, Dashboard } from "./pages";
 //* Components
-import { Main, Footer, GlobalStyles, Header, RequireAuth } from "./components";
+import {
+  Main,
+  Footer,
+  GlobalStyles,
+  Header,
+  RequireAuth,
+  NotFound,
+} from "./components";
 //* Provider
 import { Provider } from "./context/GlobalState";
 //* Progress Bar
@@ -14,6 +21,8 @@ import "./components/styles/nprogress.css";
 const Wrapper = styled.div`
   max-width: 1000px;
   margin: 100px auto;
+  display: flex;
+  justify-content: center;
 `;
 
 const App = () => {
@@ -42,6 +51,7 @@ const App = () => {
               </RequireAuth>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Wrapper>
       <Footer />
