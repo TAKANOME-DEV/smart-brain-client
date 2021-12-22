@@ -4,7 +4,7 @@ import styled from "styled-components";
 //* Pages
 import { Signin, Signup, Dashboard } from "./pages";
 //* Components
-import { Main, Footer, GlobalStyles, Header } from "./components";
+import { Main, Footer, GlobalStyles, Header, RequireAuth } from "./components";
 //* Provider
 import { Provider } from "./context/GlobalState";
 //* Progress Bar
@@ -34,7 +34,14 @@ const App = () => {
           <Route exact path="/" element={<Main />} />
           <Route path="/login" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
         </Routes>
       </Wrapper>
       <Footer />

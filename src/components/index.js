@@ -4,6 +4,7 @@ export { default as Main } from "./Main";
 export { default as Modal } from "./Modal";
 export { default as User } from "./User";
 export { default as Rank } from "./Rank";
+export { default as RequireAuth } from "./RequireAuth";
 export { default as ImageLinkForm } from "./ImageLinkForm";
 export { default as FaceRecognition } from "./FaceRecognition";
 export { default as GlobalStyles } from "./styles/Global";
