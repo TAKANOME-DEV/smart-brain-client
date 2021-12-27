@@ -1,25 +1,19 @@
 import React from "react";
 //* Styles
-import { Container, Error, Face, Box } from "./styles/FaceRecognition.styled";
+import { Container, Face, Box } from "./styles/FaceRecognition.styled";
 
-const FaceRecognition = ({ imageUrl, box, error }) => {
+const FaceRecognition = ({ imageUrl, box }) => {
   return (
     <Container>
-      {error ? (
-        <Error>{error}</Error>
-      ) : (
-        <>
-          <Face id="box" src={imageUrl} alt="" />
-          <Box
-            style={{
-              top: box.topRow,
-              left: box.leftCol,
-              bottom: box.bottomRow,
-              right: box.rightCol,
-            }}
-          ></Box>
-        </>
-      )}
+      <Face id="box" src={imageUrl} alt="" />
+      <Box
+        style={{
+          top: box.topRow,
+          left: box.leftCol,
+          bottom: box.bottomRow,
+          right: box.rightCol,
+        }}
+      ></Box>
     </Container>
   );
 };

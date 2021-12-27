@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+//* Components
+import { ErrorMessage, Input } from "../components";
 //* Image
 import { signup } from "../assets";
 //* Context
@@ -12,12 +14,9 @@ import {
   UserInfo,
   Title,
   Form,
-  Label,
-  Input,
   Button,
   Text,
   Span,
-  Error,
 } from "../components/styles/SigninSignup.styled";
 
 const Signup = () => {
@@ -53,6 +52,9 @@ const Signup = () => {
     } catch (err) {
       if (err.response) {
         showError(err.response.data);
+        setTimeout(() => {
+          showError(null);
+        }, 2000);
       }
     }
   };
@@ -65,29 +67,26 @@ const Signup = () => {
       <UserInfo>
         <Title>Signup</Title>
         <Form onSubmit={handleSubmitForm}>
-          <Label htmlFor="username">Username :</Label>
           <Input
-            required
-            type="text"
+            label="Username"
+            name="username"
             value={username}
-            onChange={handleUsernameChange}
+            handleChange={handleUsernameChange}
           />
-          <Label htmlFor="email">Email :</Label>
           <Input
-            required
-            type="email"
+            label="Email"
+            name="email"
             value={email}
-            onChange={handleEmailChange}
+            handleChange={handleEmailChange}
           />
-          <Label htmlFor="password">Password :</Label>
           <Input
-            required
-            type="password"
+            label="Password"
+            name="password"
             value={password}
-            onChange={handlePasswordChange}
+            handleChange={handlePasswordChange}
           />
           <Button type="submit">Sign up</Button>
-          {error && <Error>{error}</Error>}
+          {error && <ErrorMessage error={error} />}
           <Text>
             Already have a account?{" "}
             <Link to="/login">

@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+//* Components
+import { ErrorMessage, Input } from "../components";
 //* Image
 import { login } from "../assets";
 //* Context
@@ -12,12 +14,9 @@ import {
   UserInfo,
   Title,
   Form,
-  Label,
-  Input,
   Button,
   Text,
   Span,
-  Error,
 } from "../components/styles/SigninSignup.styled";
 
 const Signin = () => {
@@ -50,6 +49,9 @@ const Signin = () => {
     } catch (err) {
       if (err.response) {
         showError(err.response.data);
+        setTimeout(() => {
+          showError(null);
+        }, 2000);
       }
     }
   };
@@ -62,22 +64,20 @@ const Signin = () => {
       <UserInfo>
         <Title>Signin</Title>
         <Form onSubmit={handleSubmitForm}>
-          <Label htmlFor="email">Email :</Label>
           <Input
-            required
-            type="email"
+            label="Email"
+            name="email"
             value={email}
-            onChange={handleInputMail}
+            handleChange={handleInputMail}
           />
-          <Label htmlFor="password">Password :</Label>
           <Input
-            required
-            type="password"
+            label="Password"
+            name="password"
             value={password}
-            onChange={handleInputPassword}
+            handleChange={handleInputPassword}
           />
           <Button type="submit">Login</Button>
-          {error && <Error>{error}</Error>}
+          {error && <ErrorMessage error={error} />}
           <Text>
             Don't have a account?{" "}
             <Link to="/signup">
