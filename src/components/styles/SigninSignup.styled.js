@@ -65,7 +65,7 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   font-size: 22px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 `;
 
 export const Input = styled.input`
@@ -76,7 +76,7 @@ export const Input = styled.input`
   background: #ffffff;
   color: #202027;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0;
   padding: 10px 15px;
 `;
 
@@ -104,11 +104,4 @@ export const Span = styled.span`
   color: #1172a7;
   text-decoration: underline;
   margin-left: 10px;
-`;
-
-export const Error = styled.div`
-  color: red;
-  font-size: 20px;
-  margin-top: 10px;
-  text-align: center;
 `;

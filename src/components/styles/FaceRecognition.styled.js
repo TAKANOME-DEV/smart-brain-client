@@ -19,10 +19,3 @@ export const Box = styled.div`
   align-items: center;
   cursor: pointer;
 `;
-
-export const Error = styled.div`
-  color: red;
-  font-size: 20px;
-  margin-top: 20px;
-  width: 500px;
-`;

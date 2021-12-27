@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Title, Content, Button } from "./styles/404.styled";
+import { Card, Title, Content, Button } from "../styles/404.styled";
 
 const NotFound = () => {
   return (

@@ -5,13 +5,14 @@ import axios from "axios";
 import { Context } from "../context/GlobalState";
 //* Components
 import { Rank, ImageLinkForm, FaceRecognition } from "../components";
+import { ErrorMessage } from "../components/";
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 200px 0;
+  margin: 100px 0;
 `;
 
 const Dashboard = () => {
@@ -88,7 +89,8 @@ const Dashboard = () => {
 
         displayBox(calculateFaceLocation(data));
       } else {
-        showError(data.outputs[0].status.details);
+        showError(data.outputs[0].status.description);
+        setTimeout(() => showError(null), 2000);
       }
     } catch (err) {
       console.log("err", err);
@@ -102,7 +104,11 @@ const Dashboard = () => {
         handleInputChange={handleInputChange}
         handleSubmit={handleInputSubmit}
       />
-      <FaceRecognition imageUrl={imageUrl} box={box} error={error} />
+      {error ? (
+        <ErrorMessage error={error} />
+      ) : (
+        <FaceRecognition imageUrl={imageUrl} box={box} />
+      )}
     </Container>
   );
 };
