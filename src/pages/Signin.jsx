@@ -44,7 +44,7 @@ const Signin = () => {
       if (res.data.id) {
         loadUser(res.data);
         showError(null);
-        navigate("/dashboard", { replace: true });
+        navigate("/dashboard");
       }
     } catch (err) {
       if (err.response) {
