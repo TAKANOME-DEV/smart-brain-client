@@ -7,6 +7,7 @@ import { Context } from "../context/GlobalState";
 import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 import { ErrorMessage } from "../components/";
 
+//* Styles
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -85,8 +86,7 @@ const Dashboard = () => {
           }
         );
 
-        loadUser(Object.assign(user, { entries: count.data }));
-
+        loadUser({ ...user, entries: count.data });
         displayBox(calculateFaceLocation(data));
       } else {
         showError(data.outputs[0].status.description);

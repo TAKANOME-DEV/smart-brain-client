@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+//* Context
+import { Context } from "../context/GlobalState";
 //* Image
 import { smLogo } from "../assets";
 //* SVG
@@ -31,6 +33,20 @@ const Header = () => {
     }
   }, [location]);
 
+  const { loadUser } = useContext(Context);
+  let navigate = useNavigate();
+
+  const handleSignout = () => {
+    loadUser({
+      id: "",
+      username: "",
+      email: "",
+      entries: 0,
+      joined: "",
+    });
+    navigate("/");
+  };
+
   return (
     <Wrapper>
       <Nav>
@@ -45,9 +61,7 @@ const Header = () => {
             isSignedIn={isSignedIn}
           />
           {isSignedIn ? (
-            <Link to="/login">
-              <Secondary>Signout</Secondary>
-            </Link>
+            <Secondary onClick={handleSignout}>Signout</Secondary>
           ) : (
             <>
               <Link to="/login">
