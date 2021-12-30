@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 //* Components
 import { ErrorMessage, Input } from "../components";
+//* Config
+import { PROD_ENDPOINT } from "../config";
 //* Image
 import { signup } from "../assets";
 //* Context
@@ -36,7 +38,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.PROD_ENDPOINT}/signup`, {
+      const res = await axios.post(`${PROD_ENDPOINT}/signup`, {
         username: username,
         email: email,
         password: password,

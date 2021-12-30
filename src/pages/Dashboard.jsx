@@ -6,7 +6,8 @@ import { Context } from "../context/GlobalState";
 //* Components
 import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 import { ErrorMessage } from "../components/";
-
+//* Config
+import { PROD_ENDPOINT, CLARIFAI_ENDPOINT } from "../config";
 //* Styles
 const Container = styled.div`
   display: flex;
@@ -72,14 +73,11 @@ const Dashboard = () => {
         body: raw,
       };
 
-      const response = await fetch(
-        process.env.CLARIFAI_ENDPOINT,
-        requestOptions
-      );
+      const response = await fetch(CLARIFAI_ENDPOINT, requestOptions);
       const data = await response.json();
       if (data.status.code === 10000) {
         showError(null);
-        const count = await axios.put(`${process.env.PROD_ENDPOINT}/image`, {
+        const count = await axios.put(`${PROD_ENDPOINT}/image`, {
           id: user.id,
         });
 

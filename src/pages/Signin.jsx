@@ -7,6 +7,8 @@ import { ErrorMessage, Input } from "../components";
 import { login } from "../assets";
 //* Context
 import { Context } from "../context/GlobalState";
+//* Config
+import { PROD_ENDPOINT } from "../config";
 //* Styles
 import {
   Container,
@@ -34,7 +36,7 @@ const Signin = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${process.env.PROD_ENDPOINT}/login`, {
+      const res = await axios.post(`${PROD_ENDPOINT}/login`, {
         email: email,
         password: password,
       });
