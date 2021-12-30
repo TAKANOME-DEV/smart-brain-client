@@ -51,6 +51,8 @@ const Signin = () => {
       expectedError
         ? showError(err.response.data)
         : showError("Oops! An unexpected error occurred");
+
+      setTimeout(() => showError(null), 3000);
     }
   };
 

@@ -30,8 +30,6 @@ export const Provider = ({ children }) => {
       type: SHOW_ERROR,
       payload: error,
     });
-
-    setTimeout(() => showError(null), 3000);
   };
 
   const value = {

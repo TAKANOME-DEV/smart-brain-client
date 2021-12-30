@@ -85,9 +85,11 @@ const Dashboard = () => {
         displayBox(calculateFaceLocation(data));
       } else {
         showError(data.outputs[0].status.description);
+        setTimeout(() => showError(null), 3000);
       }
     } catch (err) {
       showError("Oops! An unexpected error occurred, please try again");
+      setTimeout(() => showError(null), 3000);
       setImageUrl("");
     }
   };
