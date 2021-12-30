@@ -4,7 +4,7 @@ import { Context } from "../context/GlobalState";
 
 const RequireAuth = ({ children }) => {
   const { user } = useContext(Context);
-  if (user.id === "") return <Navigate to="/login" replace />;
+  if (user.id === "") return <Navigate to="/login" />;
   return <>{children}</>;
 };
 

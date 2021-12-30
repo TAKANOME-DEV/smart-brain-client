@@ -73,27 +73,24 @@ const Dashboard = () => {
       };
 
       const response = await fetch(
-        "https://api.clarifai.com/v2/models/f76196b43bbd45c99b4f3cd8e8b40a8a/versions/6dc7e46bc9124c5c8824be4822abe105/outputs",
+        process.env.CLARIFAI_ENDPOINT,
         requestOptions
       );
       const data = await response.json();
       if (data.status.code === 10000) {
         showError(null);
-        const count = await axios.put(
-          "https://smart-server-brain.herokuapp.com/image",
-          {
-            id: user.id,
-          }
-        );
+        const count = await axios.put(`${process.env.PROD_ENDPOINT}/image`, {
+          id: user.id,
+        });
 
         loadUser({ ...user, entries: count.data });
         displayBox(calculateFaceLocation(data));
       } else {
         showError(data.outputs[0].status.description);
-        setTimeout(() => showError(null), 2000);
       }
     } catch (err) {
-      console.log("err", err);
+      showError("Oops! An unexpected error occurred, please try again");
+      setImageUrl("");
     }
   };
 

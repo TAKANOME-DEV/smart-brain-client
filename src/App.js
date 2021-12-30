@@ -18,6 +18,7 @@ import { Provider } from "./context/GlobalState";
 import NProgress from "nprogress";
 import "./components/styles/nprogress.css";
 
+//* Styles
 const Wrapper = styled.div`
   max-width: 1000px;
   margin: 100px auto;
