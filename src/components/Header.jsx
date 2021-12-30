@@ -59,6 +59,7 @@ const Header = () => {
             handleClick={handleClick}
             handleClose={handleClose}
             isSignedIn={isSignedIn}
+            handleSignout={handleSignout}
           />
           {isSignedIn ? (
             <Secondary onClick={handleSignout}>Signout</Secondary>

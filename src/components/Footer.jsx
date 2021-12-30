@@ -3,6 +3,7 @@ import styled from "styled-components";
 //* Image
 import { copyright } from "../assets";
 
+//* Styles
 const Container = styled.footer`
   display: flex;
   justify-content: center;

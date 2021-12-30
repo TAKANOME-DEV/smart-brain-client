@@ -9,7 +9,13 @@ import {
   Secondary,
 } from "./styles/User.styled";
 
-const User = ({ handleClick, handleClose, isOpen, isSignedIn }) => {
+const User = ({
+  handleClick,
+  handleClose,
+  handleSignout,
+  isOpen,
+  isSignedIn,
+}) => {
   return (
     <Container>
       <Icon
@@ -30,9 +36,7 @@ const User = ({ handleClick, handleClose, isOpen, isSignedIn }) => {
       <Modal open={isOpen}>
         <Close onClick={handleClose}>x</Close>
         {isSignedIn ? (
-          <Link to="/">
-            <Secondary>Signout</Secondary>
-          </Link>
+          <Secondary onClick={handleSignout}>Signout</Secondary>
         ) : (
           <>
             <Link to="/login">

@@ -36,26 +36,22 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "https://smart-server-brain.herokuapp.com/signup",
-        {
-          username: username,
-          email: email,
-          password: password,
-        }
-      );
+      const res = await axios.post(`${process.env.PROD_ENDPOINT}/signup`, {
+        username: username,
+        email: email,
+        password: password,
+      });
       if (res.data.id) {
         loadUser(res.data);
         showError(null);
         navigate("/dashboard");
       }
     } catch (err) {
-      if (err.response) {
-        showError(err.response.data);
-        setTimeout(() => {
-          showError(null);
-        }, 2000);
-      }
+      const expectedError =
+        err.response?.status >= 400 && err.response?.status < 500;
+      expectedError
+        ? showError(err.response.data)
+        : showError("Oops! An unexpected error occurred");
     }
   };
 
