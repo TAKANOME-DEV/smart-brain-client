@@ -1,14 +1,10 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
-//* Context
-import { Context } from "../context/GlobalState";
-//* Components
-import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 import { ErrorMessage } from "../components/";
-//* Config
-import { PROD_ENDPOINT, CLARIFAI_ENDPOINT } from "../config";
-//* Styles
+import { Rank, ImageLinkForm, FaceRecognition } from "../components";
+import { Context } from "../context/GlobalState";
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -68,18 +64,24 @@ const Dashboard = () => {
         method: "POST",
         headers: {
           Accept: "application/json",
-          Authorization: "Key 1902138e82dd4ae9b3cd265cdb66bd4c", //* Test Key :)
+          Authorization: process.env.REACT_APP_CLARIFAI_API_KEY,
         },
         body: raw,
       };
 
-      const response = await fetch(CLARIFAI_ENDPOINT, requestOptions);
+      const response = await fetch(
+        process.env.REACT_APP_CLARIFAI_ENDPOINT,
+        requestOptions
+      );
       const data = await response.json();
       if (data.status.code === 10000) {
         showError(null);
-        const count = await axios.put(`${PROD_ENDPOINT}/image`, {
-          id: user.id,
-        });
+        const count = await axios.put(
+          `${process.env.REACT_APP_PROD_ENDPOINT}/image`,
+          {
+            id: user.id,
+          }
+        );
 
         loadUser({ ...user, entries: count.data });
         displayBox(calculateFaceLocation(data));

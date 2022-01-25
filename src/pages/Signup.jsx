@@ -1,15 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-//* Components
 import { ErrorMessage, Input } from "../components";
-//* Config
-import { PROD_ENDPOINT } from "../config";
-//* Image
 import { signup } from "../assets";
-//* Context
 import { Context } from "../context/GlobalState";
-//* Styles
 import {
   Container,
   Image,
@@ -38,11 +32,14 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${PROD_ENDPOINT}/signup`, {
-        username: username,
-        email: email,
-        password: password,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_PROD_ENDPOINT}/signup`,
+        {
+          username: username,
+          email: email,
+          password: password,
+        }
+      );
       if (res.data.id) {
         loadUser(res.data);
         showError(null);
