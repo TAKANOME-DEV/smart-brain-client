@@ -1,19 +1,19 @@
 import React from "react";
-//* Styles
-import { Container, Face, Box } from "./styles/FaceRecognition.styled";
+import { Container } from "./styles/FaceRecognition.styled";
 
 const FaceRecognition = ({ imageUrl, box }) => {
   return (
     <Container>
-      <Face id="box" src={imageUrl} alt="" />
-      <Box
+      <img id="box" src={imageUrl} alt="" />
+      <div
+        className="box"
         style={{
           top: box.topRow,
           left: box.leftCol,
           bottom: box.bottomRow,
           right: box.rightCol,
         }}
-      ></Box>
+      ></div>
     </Container>
   );
 };

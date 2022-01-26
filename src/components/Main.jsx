@@ -1,30 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//* Image
 import { welcome } from "../assets";
-//* Styles
-import {
-  Container,
-  Image,
-  Para,
-  Title,
-  Text,
-  Button,
-} from "./styles/Main.styled";
+import { Container } from "./styles/Main.styled";
 
 const Main = () => {
   return (
     <Container>
-      <div>
-        <Image src={welcome} alt="Welcome SVG" />
+      <div className="container">
+        <div className="img">
+          <img src={welcome} alt="Welcome SVG" />
+        </div>
+        <div className="welcome">
+          <h1>Welcome to the magic brain.</h1>
+          <p>This brain will detect faces in your pictures.</p>
+          <Link to="/signup">
+            <button>Give it a try</button>
+          </Link>
+        </div>
       </div>
-      <Para>
-        <Title>Welcome to the magic brain.</Title>
-        <Text>This brain will detect faces in your pictures.</Text>
-        <Link to="/signup">
-          <Button>Give it a try</Button>
-        </Link>
-      </Para>
     </Container>
   );
 };

@@ -1,55 +1,43 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
-
-export const Nav = styled.nav`
-  position: fixed;
+export const Wrapper = styled.header`
+  position: sticky;
   top: 0;
-  z-index: 1;
   width: 100%;
-  padding: 10px 50px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  background: #2f303a;
+  padding: 0.5rem 0;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-`;
+  background-color: var(--dark-color);
 
-export const Buttons = styled.div`
-  justify-self: flex-end;
-  align-self: center;
-`;
+  .container {
+    display: grid;
+    grid-template-columns: auto 1fr;
 
-export const Secondary = styled.button`
-  font-size: 25px;
-  padding: 5px 20px;
-  color: #fff;
-  background-color: #2f303a;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
+    img {
+      width: 100%;
+    }
 
-export const Primary = styled.button`
-  font-size: 25px;
-  padding: 5px 20px;
-  color: #2f303a;
-  background-color: #fff;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  margin-left: 20px;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-  }
-  @media (max-width: 600px) {
-    display: none;
+    div {
+      justify-self: flex-end;
+      align-self: center;
+
+      .secondary {
+        color: var(--white-color);
+        background-color: var(--dark-color);
+        border: 1px solid var(--white-color);
+        &:hover {
+          background-color: var(--lightWhite-color);
+        }
+        @media (max-width: 600px) {
+          display: none;
+        }
+      }
+
+      .primary {
+        margin-left: 1.25rem;
+        @media (max-width: 600px) {
+          display: none;
+        }
+      }
+    }
   }
 `;
-
-export const Logo = styled.img``;

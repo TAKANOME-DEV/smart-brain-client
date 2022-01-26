@@ -1,52 +1,49 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 800px;
-  height: 90px;
-  background-color: #202027;
-  border-radius: 10px;
+  max-width: 40rem;
+  width: 100%;
+  height: 5.6rem;
+  background-color: var(--darker-color);
+  border-radius: 0.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-width: 490px) {
-    width: 100%;
-    height: 100px;
-    flex-wrap: wrap;
+
+  input {
+    width: 70%;
+    max-height: 3rem;
+    height: 100%;
+    font-size: 1.2rem;
+    border-radius: 0.6rem;
+    padding: 0 1rem;
+    border: none;
+    outline: none;
   }
 
-  @media (min-width: 492px) and (max-width: 700px) {
-    width: 100%;
-    height: 80px;
-    flex-wrap: wrap;
+  button {
+    font-weight: bold;
+    padding: 0.7rem 2rem;
+    margin-left: 0.6rem;
+    border-radius: 0.6rem;
+    transition: transform 0.5s;
+    &:active {
+      transform: scale(0.9);
+    }
   }
-`;
 
-export const Input = styled.input`
-  width: 70%;
-  height: 60%;
-  font-size: 20px;
-  border-radius: 10px;
-  padding: 0 20px;
-  border: none;
-  outline: none;
-  @media (max-width: 490px) {
-    width: 85%;
-    height: 40%;
-  }
-`;
+  @media (max-width: 560px) {
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
 
-export const Button = styled.button`
-  font-size: 25px;
-  font-weight: bold;
-  padding: 13px 35px;
-  margin-left: 10px;
-  border-radius: 10px;
-  border: none;
-  background-color: #fff;
-  color: #202027;
-  cursor: pointer;
-  transition: transform 0.5s;
-  &:active {
-    transform: scale(0.9);
+    input {
+      width: 90%;
+      margin: 1rem 0;
+    }
+
+    button {
+      width: 90%;
+    }
   }
 `;

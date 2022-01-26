@@ -1,15 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { ModalContainer, Overlay, Container } from "./styles/Modal.styled";
+import { ModalContainer } from "./styles/Modal.styled";
 
 const Modal = ({ open, children, onClose }) => {
   if (!open) return null;
-  return ReactDOM.createPortal(
+
+  return (
     <ModalContainer>
-      <Overlay />
-      <Container onClick={onClose}>{children}</Container>
-    </ModalContainer>,
-    document.getElementById("portal")
+      <div className="overlay" onClick={onClose} />
+      <div className="modal" onClick={onClose}>
+        {children}
+      </div>
+    </ModalContainer>
   );
 };
 

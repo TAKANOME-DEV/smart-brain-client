@@ -4,16 +4,7 @@ import axios from "axios";
 import { ErrorMessage, Input } from "../components";
 import { login } from "../assets";
 import { Context } from "../context/GlobalState";
-import {
-  Container,
-  Image,
-  UserInfo,
-  Title,
-  Form,
-  Button,
-  Text,
-  Span,
-} from "../components/styles/SigninSignup.styled";
+import { Container } from "../components/styles/SigninSignup.styled";
 
 const Signin = () => {
   const { loadUser, error, showError } = useContext(Context);
@@ -55,34 +46,38 @@ const Signin = () => {
 
   return (
     <Container>
-      <div>
-        <Image src={login} alt="Signin" />
+      <div className="container">
+        <div className="img">
+          <img src={login} alt="Signin" />
+        </div>
+        <div className="form-container">
+          <div>
+            <h1>Signin</h1>
+            <form onSubmit={handleSubmitForm}>
+              <Input
+                label="Email"
+                name="email"
+                value={email}
+                handleChange={handleInputMail}
+              />
+              <Input
+                label="Password"
+                name="password"
+                value={password}
+                handleChange={handleInputPassword}
+              />
+              <button type="submit">Login</button>
+              {error && <ErrorMessage error={error} />}
+              <p>
+                Don't have a account?{" "}
+                <Link to="/signup">
+                  <span>Sign up</span>
+                </Link>
+              </p>
+            </form>
+          </div>
+        </div>
       </div>
-      <UserInfo>
-        <Title>Signin</Title>
-        <Form onSubmit={handleSubmitForm}>
-          <Input
-            label="Email"
-            name="email"
-            value={email}
-            handleChange={handleInputMail}
-          />
-          <Input
-            label="Password"
-            name="password"
-            value={password}
-            handleChange={handleInputPassword}
-          />
-          <Button type="submit">Login</Button>
-          {error && <ErrorMessage error={error} />}
-          <Text>
-            Don't have a account?{" "}
-            <Link to="/signup">
-              <Span>Sign up</Span>
-            </Link>
-          </Text>
-        </Form>
-      </UserInfo>
     </Container>
   );
 };
