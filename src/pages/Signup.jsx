@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ErrorMessage, Input } from "../components";
+import { toast } from "react-toastify";
+import { Input } from "../components";
 import { signup } from "../assets";
 import { Context } from "../context/GlobalState";
 import { Container } from "../components/styles/SigninSignup.styled";
 
 const Signup = () => {
-  const { error, showError, loadUser } = useContext(Context);
+  const { loadUser } = useContext(Context);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -33,17 +34,14 @@ const Signup = () => {
       );
       if (res.data.id) {
         loadUser(res.data);
-        showError(null);
         navigate("/dashboard");
       }
     } catch (err) {
       const expectedError =
         err.response?.status >= 400 && err.response?.status < 500;
       expectedError
-        ? showError(err.response.data)
-        : showError("Oops! An unexpected error occurred");
-
-      setTimeout(() => showError(null), 3000);
+        ? toast.error(err.response.data)
+        : toast.error("Oops! An unexpected error occurred");
     }
   };
 
@@ -76,7 +74,6 @@ const Signup = () => {
                 handleChange={handlePasswordChange}
               />
               <button type="submit">Sign up</button>
-              {error && <ErrorMessage error={error} />}
               <p>
                 Already have a account?{" "}
                 <Link to="/login">

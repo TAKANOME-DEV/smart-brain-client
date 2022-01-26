@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { ErrorMessage } from "../components/";
+import { toast } from "react-toastify";
 import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 import { Context } from "../context/GlobalState";
 
@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const Dashboard = () => {
-  const { user, loadUser, error, showError } = useContext(Context);
+  const { user, loadUser } = useContext(Context);
 
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -77,7 +77,6 @@ const Dashboard = () => {
       );
       const data = await response.json();
       if (data.status.code === 10000) {
-        showError(null);
         const count = await axios.put(
           `${process.env.REACT_APP_PROD_ENDPOINT}/image`,
           {
@@ -88,12 +87,10 @@ const Dashboard = () => {
         loadUser({ ...user, entries: count.data });
         displayBox(calculateFaceLocation(data));
       } else {
-        showError(data.outputs[0].status.description);
-        setTimeout(() => showError(null), 3000);
+        toast.error(data.outputs[0].status.description);
       }
     } catch (err) {
-      showError("Oops! An unexpected error occurred, please try again");
-      setTimeout(() => showError(null), 3000);
+      toast.error("Oops! An unexpected error occurred, please try again");
       setImageUrl("");
     }
   };
@@ -106,11 +103,7 @@ const Dashboard = () => {
           handleInputChange={handleInputChange}
           handleSubmit={handleInputSubmit}
         />
-        {error ? (
-          <ErrorMessage error={error} />
-        ) : (
-          <FaceRecognition imageUrl={imageUrl} box={box} />
-        )}
+        <FaceRecognition imageUrl={imageUrl} box={box} />
       </div>
     </Container>
   );

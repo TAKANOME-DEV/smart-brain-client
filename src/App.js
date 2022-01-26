@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { Signin, Signup, Dashboard } from "./pages";
 import {
   Main,
@@ -12,6 +13,7 @@ import {
 import { Provider } from "./context/GlobalState";
 import NProgress from "nprogress";
 import "./components/styles/nprogress.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   let location = useLocation();
@@ -25,6 +27,7 @@ const App = () => {
   return (
     <Provider>
       <GlobalStyles />
+      <ToastContainer />
       <Header />
       <div>
         <Routes>
