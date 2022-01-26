@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-`;
 
-export const Face = styled.img`
-  margin-top: 20px;
-  width: 500px;
-  height: auto;
-`;
+  img {
+    margin-top: 1.5rem;
+    max-width: 31rem;
+    width: 100%;
+    height: auto;
+  }
 
-export const Box = styled.div`
-  position: absolute;
-  box-shadow: 0 0 0 3px #149df2 inset;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  .box {
+    position: absolute;
+    box-shadow: 0 0 0 3px var(--blue-color) inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 `;

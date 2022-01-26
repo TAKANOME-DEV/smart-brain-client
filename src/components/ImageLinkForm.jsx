@@ -1,15 +1,15 @@
 import React from "react";
-import { Container, Input, Button } from "./styles/ImageLink.styled";
+import { Container } from "./styles/ImageLink.styled";
 
 const ImageLinkForm = ({ handleInputChange, handleSubmit }) => {
   return (
     <Container>
-      <Input
+      <input
         type="url"
         placeholder="Enter a image link..."
         onChange={handleInputChange}
       />
-      <Button onClick={handleSubmit}>Detect</Button>
+      <button onClick={handleSubmit}>Detect</button>
     </Container>
   );
 };

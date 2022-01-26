@@ -1,65 +1,62 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 100%;
-  display: grid;
-  gap: 80px;
-  grid-template-columns: 1fr 2fr;
-  margin: 0;
-  @media screen and (max-width: 560px) {
-    grid-template-columns: 1fr;
-    gap: 0;
+export const Container = styled.main`
+  .container {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 20rem 1fr;
+    margin: 2rem auto;
+
+    .img {
+      img {
+        width: 100%;
+      }
+    }
+
+    .welcome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 0 2rem;
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 0.8rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      button {
+        font-weight: bold;
+        font-size: 2rem;
+      }
+    }
   }
-`;
 
-export const Image = styled.img`
-  width: 100%;
-  @media (max-width: 560px) {
-    display: none;
+  @media (min-width: 640px) and (max-width: 768px) {
+    .container {
+      grid-template-columns: 15rem 1fr;
+      gap: 2rem;
+    }
   }
-`;
+  @media (max-width: 639px) {
+    .container {
+      display: flex;
+      justify-content: center;
+      margin: 8rem 0;
 
-export const Para = styled.div`
-  width: 100%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+      .welcome {
+        padding: 0;
+      }
+    }
 
-export const Title = styled.p`
-  font-weight: bold;
-  font-size: 50px;
-  color: #ffffff;
-  @media screen and (max-width: 700px) {
-    font-size: 40px;
-  }
-`;
-
-export const Text = styled.p`
-  font-weight: bold;
-  font-size: 30px;
-  margin: 20px 0;
-  text-align: center;
-  color: #ffffff;
-  @media screen and (max-width: 700px) {
-    font-size: 25px;
-  }
-`;
-
-export const Button = styled.button`
-  padding: 10px 50px;
-  font-weight: bold;
-  font-size: 30px;
-  background: #ffffff;
-  border-radius: 20px;
-  color: #2f303a;
-  cursor: pointer;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.39);
-  text-align: center;
-  @media screen and (max-width: 700px) {
-    font-size: 25px;
-    padding: 10px 30px;
+    .img {
+      display: none;
+    }
   }
 `;

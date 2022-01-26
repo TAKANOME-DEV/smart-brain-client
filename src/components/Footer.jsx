@@ -1,27 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-//* Image
 import { copyright } from "../assets";
 
-//* Styles
 const Container = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #2f303a;
+  background: var(--dark-color);
   box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.15);
-  padding: 15px 0;
-  margin: 0;
-`;
-const Image = styled.img`
-  width: 313px;
-  height: 44px;
+  padding: 1rem 0;
+  /* margin: 0 auto; */
+
+  img {
+    width: 15rem;
+    height: 3rem;
+  }
+
+  /* @media (max-width: 639px) {
+    position: fixed;
+    bottom: 0;
+  } */
 `;
 
 const Footer = () => {
   return (
     <Container>
-      <Image src={copyright} alt="Copyright" />
+      <img src={copyright} alt="Copyright" />
     </Container>
   );
 };

@@ -4,5 +4,6 @@
     "titleBar.inactiveForeground": "#000000CC",
     "titleBar.activeBackground": "#f8ad0b",
     "titleBar.inactiveBackground": "#f8ad0bCC"
-  }
+  },
+  "cSpell.words": ["Signout"]
 }

@@ -1,11 +1,11 @@
 import React from "react";
-import { Input as InputStyled, Label } from "../styles/SigninSignup.styled";
+import { Container } from "../styles/Input.styled";
 
 const Input = ({ label, name, value, handleChange }) => {
   return (
-    <div>
-      <Label htmlFor={name}>{label} :</Label>
-      <InputStyled
+    <Container>
+      <h2 htmlFor={name}>{label}</h2>
+      <input
         required
         id={name}
         name={name}
@@ -13,7 +13,7 @@ const Input = ({ label, name, value, handleChange }) => {
         value={value}
         onChange={handleChange}
       />
-    </div>
+    </Container>
   );
 };
 

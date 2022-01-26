@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import styled from "styled-components";
 import { Signin, Signup, Dashboard } from "./pages";
 import {
   Main,
@@ -13,13 +12,6 @@ import {
 import { Provider } from "./context/GlobalState";
 import NProgress from "nprogress";
 import "./components/styles/nprogress.css";
-
-const Wrapper = styled.div`
-  max-width: 1000px;
-  margin: 100px auto;
-  display: flex;
-  justify-content: center;
-`;
 
 const App = () => {
   let location = useLocation();
@@ -34,7 +26,7 @@ const App = () => {
     <Provider>
       <GlobalStyles />
       <Header />
-      <Wrapper>
+      <div>
         <Routes>
           <Route exact path="/" element={<Main />} />
           <Route path="/login" element={<Signin />} />
@@ -49,7 +41,7 @@ const App = () => {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Wrapper>
+      </div>
       <Footer />
     </Provider>
   );

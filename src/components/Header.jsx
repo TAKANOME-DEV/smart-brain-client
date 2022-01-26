@@ -1,26 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-//* Context
 import { Context } from "../context/GlobalState";
-//* Image
 import { smLogo } from "../assets";
-//* SVG
 import { User } from ".";
-//* Styles
-import {
-  Wrapper,
-  Nav,
-  Primary,
-  Secondary,
-  Logo,
-  Buttons,
-} from "./styles/Header.styled";
+import { Wrapper } from "./styles/Header.styled";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const handleClick = () => setIsOpen(true);
+  const handleClick = (e) => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
   let location = useLocation();
@@ -49,11 +38,11 @@ const Header = () => {
 
   return (
     <Wrapper>
-      <Nav>
+      <nav className="container">
         <Link to="/">
-          <Logo src={smLogo} alt="Smart Brain Logo" />
+          <img src={smLogo} alt="Smart Brain Logo" />
         </Link>
-        <Buttons>
+        <div>
           <User
             isOpen={isOpen}
             handleClick={handleClick}
@@ -62,19 +51,21 @@ const Header = () => {
             handleSignout={handleSignout}
           />
           {isSignedIn ? (
-            <Secondary onClick={handleSignout}>Signout</Secondary>
+            <button className="secondary" onClick={handleSignout}>
+              Signout
+            </button>
           ) : (
             <>
               <Link to="/login">
-                <Secondary>Login</Secondary>
+                <button className="secondary">Login</button>
               </Link>
               <Link to="/signup">
-                <Primary>Signup</Primary>
+                <button className="primary">Signup</button>
               </Link>
             </>
           )}
-        </Buttons>
-      </Nav>
+        </div>
+      </nav>
     </Wrapper>
   );
 };

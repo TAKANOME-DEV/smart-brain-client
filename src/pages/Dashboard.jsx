@@ -6,11 +6,13 @@ import { Rank, ImageLinkForm, FaceRecognition } from "../components";
 import { Context } from "../context/GlobalState";
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 100px 0;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 6.25rem auto;
+  }
 `;
 
 const Dashboard = () => {
@@ -98,16 +100,18 @@ const Dashboard = () => {
 
   return (
     <Container>
-      <Rank />
-      <ImageLinkForm
-        handleInputChange={handleInputChange}
-        handleSubmit={handleInputSubmit}
-      />
-      {error ? (
-        <ErrorMessage error={error} />
-      ) : (
-        <FaceRecognition imageUrl={imageUrl} box={box} />
-      )}
+      <div className="container">
+        <Rank />
+        <ImageLinkForm
+          handleInputChange={handleInputChange}
+          handleSubmit={handleInputSubmit}
+        />
+        {error ? (
+          <ErrorMessage error={error} />
+        ) : (
+          <FaceRecognition imageUrl={imageUrl} box={box} />
+        )}
+      </div>
     </Container>
   );
 };
