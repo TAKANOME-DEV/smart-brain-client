@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { LOAD_USER, SHOW_ERROR } from "./Constants";
+import { LOAD_USER } from "./Constants";
 import Reducer from "./Reducer";
 
 const initialState = {
@@ -10,7 +10,6 @@ const initialState = {
     entries: 0,
     joined: "",
   },
-  error: null,
 };
 
 export const Context = createContext(initialState);
@@ -25,18 +24,10 @@ export const Provider = ({ children }) => {
     });
   };
 
-  const showError = (error) => {
-    dispatch({
-      type: SHOW_ERROR,
-      payload: error,
-    });
-  };
-
   const value = {
     error: state.error,
     user: state.user,
     loadUser,
-    showError,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
