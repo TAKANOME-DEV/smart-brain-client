@@ -5,6 +5,7 @@ export const Wrapper = styled.header`
   top: 0;
   width: 100%;
   padding: 0.5rem 0;
+  z-index: 10;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
   background-color: var(--dark-color);
 
