@@ -16,11 +16,10 @@ import "./components/styles/nprogress.css";
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
-  let location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     NProgress.start();
-
     return NProgress.done(true);
   }, [location.pathname]);
 
