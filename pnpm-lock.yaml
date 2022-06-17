@@ -6,7 +6,7 @@ specifiers:
   '@babel/plugin-transform-react-jsx': ^7.14.9
   '@commitlint/cli': 17.0.2
   '@commitlint/config-conventional': 17.0.2
-  '@testing-library/dom': 8.11.1
+  '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': ^5.15.0
   '@testing-library/react': ^11.1.0
   '@testing-library/user-event': 14.2.1
@@ -32,7 +32,7 @@ specifiers:
 dependencies:
   '@testing-library/jest-dom': 5.16.1
   '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
-  '@testing-library/user-event': 14.2.1_@testing-library+dom@8.11.1
+  '@testing-library/user-event': 14.2.1_@testing-library+dom@8.13.0
   axios: 0.24.0
   jwt-decode: 3.1.2
   nprogress: 0.2.0
@@ -50,7 +50,7 @@ devDependencies:
   '@babel/plugin-transform-react-jsx': 7.16.7_@babel+core@7.16.7
   '@commitlint/cli': 17.0.2
   '@commitlint/config-conventional': 17.0.2
-  '@testing-library/dom': 8.11.1
+  '@testing-library/dom': 8.13.0
   autoprefixer: 10.4.1_postcss@8.4.5
   husky: 8.0.1
   lint-staged: 12.1.5
@@ -2134,8 +2134,8 @@ packages:
       pretty-format: 26.6.2
     dev: false
 
-  /@testing-library/dom/8.11.1:
-    resolution: {integrity: sha512-3KQDyx9r0RKYailW2MiYrSSKEfH0GTkI51UGEvJenvcoDoeRYs0PZpi2SXqtnMClQvCqdtTTpOfFETDTVADpAg==}
+  /@testing-library/dom/8.13.0:
+    resolution: {integrity: sha512-9VHgfIatKNXQNaZTtLnalIy0jNZzY35a4S3oi08YAt9Hv1VsfZ/DfA45lM8D/UhtHBGJ4/lGwp0PZkVndRkoOQ==}
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.16.7
@@ -2175,13 +2175,13 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: false
 
-  /@testing-library/user-event/14.2.1_@testing-library+dom@8.11.1:
+  /@testing-library/user-event/14.2.1_@testing-library+dom@8.13.0:
     resolution: {integrity: sha512-HOr1QiODrq+0j9lKU5i10y9TbhxMBMRMGimNx10asdmau9cb8Xb1Vyg0GvTwyIL2ziQyh2kAloOtAQFBQVuecA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
-      '@testing-library/dom': 8.11.1
+      '@testing-library/dom': 8.13.0
     dev: false
 
   /@tootallnate/once/1.1.2:
@@ -4497,7 +4497,7 @@ packages:
     dev: false
 
   /escape-string-regexp/1.0.5:
-    resolution: {integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=}
+    resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
     engines: {node: '>=0.8.0'}
 
   /escape-string-regexp/2.0.0:
@@ -5351,7 +5351,7 @@ packages:
     dev: false
 
   /has-flag/3.0.0:
-    resolution: {integrity: sha1-tdRU3CGZriJWmfNGfloH87lVuv0=}
+    resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
 
   /has-flag/4.0.0:
@@ -6756,7 +6756,7 @@ packages:
       yallist: 4.0.0
 
   /lz-string/1.4.4:
-    resolution: {integrity: sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=}
+    resolution: {integrity: sha512-0ckx7ZHRPqb0oUm8zNr+90mtf9DQB60H1wMCjBtfi62Kl3a7JbHob6gA2bC+xRvZoOL+1hzUK8jeuEIQE8svEQ==}
     hasBin: true
 
   /magic-string/0.25.7:
